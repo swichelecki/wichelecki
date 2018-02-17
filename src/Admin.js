@@ -4,7 +4,7 @@ import WebsitesContentForm from './components/WebsiteInput';
 import AboutForm from './components/AboutForm';
 import AboutAbout from './components/AboutAbout';
 import ManageWebsites from './components/ManageWebsites';
-import './css/app.css';
+import style from './css/app.css';
 import './css/admin.css';
 
 class Admin extends Component {
