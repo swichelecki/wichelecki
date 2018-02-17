@@ -21,7 +21,7 @@ module.exports = {
         port: 8080,
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /.jsx?$/,
                 loader: 'babel-loader',
@@ -29,14 +29,14 @@ module.exports = {
                 query: {
                     presets: ['es2015', 'react', 'stage-0']
                 }
-            }],
-        rules: [
+            },
             {
-                test: /\.css$/,
-                use: [
+               test: /\.css$/,
+               use: [
                   {loader: "style-loader"},
-                  {loader: "css-loader"}]
-                }
-        ]
-    }
+                  {loader: "css-loader"}
+                ]
+             }
+          ]
+        }
 };
