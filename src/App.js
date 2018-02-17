@@ -4,7 +4,7 @@ import Body from './components/Body';
 import About from './components/About';
 import Footer from './components/Footer';
 import style from './css/app.css';
-import './css/header.css';
+import css from './css/header.css';
 import './css/body.css';
 import './css/about.css';
 import './css/footer.css';
