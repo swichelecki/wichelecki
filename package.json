@@ -43,7 +43,5 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-fontawesome": "^1.6.1",
-    "css-loader": "^0.28.9",
-    "style-loader": "^0.19.1"
   }
 }
