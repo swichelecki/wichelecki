@@ -29,7 +29,8 @@ module.exports = {
                 query: {
                     presets: ['es2015', 'react', 'stage-0']
                 }
-            },
+            }],
+        rules: [
             {
                 test: /\.css$/,
                 use: [
