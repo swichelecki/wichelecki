@@ -2,6 +2,7 @@ var path = require('path');
 
 var webpack = require('webpack');
 
+
 module.exports = {
     /*  entry: './src/index.js',
       output: { path: __dirname, filename: 'bundle.js'},*/
@@ -32,9 +33,9 @@ module.exports = {
             },
             {
                test: /\.css$/,
-                use: [
-                  {loader: "style-loader"},
-                  {loader: "css-loader"}
+                use: ['style-loader', 'css-loader'
+                //  {loader: "style-loader"},
+              //    {loader: "css-loader"}
                 ]
              }
           ]
