@@ -2,7 +2,7 @@ var path = require('path');
 
 var webpack = require('webpack');
 
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+//var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
         admin: path.join(__dirname, './src/index_admin.js')
     },
     output: {
-        path: path.join(__dirname, 'public'),
+        path: path.join(__dirname, 'dist'),
         filename: './[name].bundle.js',
     },
     watch: true,
@@ -35,7 +35,9 @@ module.exports = {
             },
             {
                test: /\.css$/,
-               use: ExtractTextPlugin.extract(['style-loader', 'css-loader'])
+               use: ['style-loader', 'css-loader?minimize!'],
+               include: path.join(__dirname, 'src')
+               //use: ExtractTextPlugin.extract(['style-loader', 'css-loader'])
              }
           ]
         },
@@ -45,11 +47,12 @@ module.exports = {
             normalize: path.join(__dirname, '/node_modules/normalize.css')
           }
         },
-        plugins: [
+      /*  plugins: [
           new ExtractTextPlugin({
-            filename: 'app.css',
+            path: path.join(__dirname, 'dist'),
+            filename: './[name].min.css',
             disabled: false,
             allChunks: true
           })
-        ]
+        ]*/
 };

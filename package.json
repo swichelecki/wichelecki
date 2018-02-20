@@ -10,9 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel": "babel",
     "webpack": "webpack",
-    "dev": "webpack-dev-server --inline --content-base",
+    "start": "webpack-dev-server --inline --content-base",
     "postinstall": "webpack -p",
-    "npm start": "node server.js"
+    "NOstart": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -34,8 +34,9 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^0.28.9",
     "express": "^4.16.2",
-    "webpack": "^3.10.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "firebase": "^4.8.2",
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
@@ -44,8 +45,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-fontawesome": "^1.6.1",
-    "css-loader": "^0.28.9",
     "style-loader": "^0.19.1",
-    "extract-text-webpack-plugin": "^3.0.2"
+    "webpack": "^3.10.0"
   }
 }

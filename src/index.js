@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import 'normalize.css';
+//import 'normalize.css';
 import * as firebase from 'firebase';
 
 var config = {
