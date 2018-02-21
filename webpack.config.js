@@ -1,5 +1,4 @@
 var path = require('path');
-
 var webpack = require('webpack');
 
 module.exports = {
@@ -23,13 +22,17 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.jsx?$/,
-                loader: 'babel-loader',
-                exclude: /node_modules/,
-                query: {
-                    presets: ['es2015', 'react', 'stage-0']
-                }
-            }
+                test: /\.js$/,
+                use: [
+                    {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015', 'react', 'stage-0']
+                    }
+                  }
+                ],
+                exclude: /node_modules/
+            },
             {
                test: /\.css$/,
                use: ['style-loader', 'css-loader']
