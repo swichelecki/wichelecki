@@ -10,9 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "babel": "babel",
     "webpack": "webpack",
-    "start": "webpack-dev-server --inline --content-base",
+    "dev": "webpack-dev-server --inline --content-base",
     "postinstall": "webpack -p",
-    "NOstart": "node server.js"
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
