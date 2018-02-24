@@ -2,8 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    /*  entry: './src/index.js',
-      output: { path: __dirname, filename: 'bundle.js'},*/
     entry: {
         index: path.join(__dirname, './src/index.js'),
         admin: path.join(__dirname, './src/index_admin.js')
@@ -15,7 +13,8 @@ module.exports = {
     },
     watch: true,
     devServer: {
-        contentBase: __dirname + "/dist/",
+        contentBase: __dirname + "/src",
+        filename: '.dist/[name].bundle.js',
         inline: true,
         host: '0.0.0.0',
         port: 8080,
