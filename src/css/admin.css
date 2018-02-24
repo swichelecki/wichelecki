@@ -74,6 +74,10 @@ button.photo-submit {
   margin: 1rem 0;
 }
 
+input[type="submit"].form-submit {
+  margin-bottom: 50px;
+}
+
 .cancel-button {
   position: relative;
   top: -50px;

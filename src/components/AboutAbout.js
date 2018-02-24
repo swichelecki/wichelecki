@@ -11,6 +11,9 @@ class AboutAbout extends Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.updateFirebase = this.updateFirebase.bind(this);
       this.openCloseForm = this.openCloseForm.bind(this);
+      this.handleFormChange = this.handleFormChange.bind(this);
+      this.handleFormSubmit = this.handleFormSubmit.bind(this);
+      this.handleFormChange = this.handleFormChange.bind(this);
       this.state = {
         header: '',
         text: '',
@@ -114,10 +117,47 @@ class AboutAbout extends Component {
 
     }
 
+    handleFormChange(event) {
+
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value
+        }, this.handletheChange);
+    }
+
+    handletheChange(){
+
+    }
+
+    handleFormSubmit(event) {
+
+        event.preventDefault();
+
+        var AboutUrlRef = firebase.database().ref('about');
+        var newAbout = AboutUrlRef.push();
+
+        newAbout.update(this.state);
+
+        this.setState({
+            header: '',
+            text: ''
+        });
+
+    }
+
     render() {
 
         return(
             <div>
+                <AboutForm
+                onFormSubmit={this.handleFormSubmit}
+                onFormChange={this.handleFormChange}
+                formValue={this.state}
+                displayProp={this.state.display}
+                />
                 <EditAboutForm
                 editAboutObject={this.state}
                 onChange={this.handleChange}
@@ -125,14 +165,45 @@ class AboutAbout extends Component {
                 displayProp={this.state.display}
                 cancelEdit={this.openCloseForm}/>
                 <h3>Manage About Section</h3>
-                <AboutDivs deleteAbout={this.deleteAbout}
+                <AboutDivs
+                deleteAbout={this.deleteAbout}
                 aboutObject={this.state.aboutArray}
                 editAbout={this.editAboutItem}
-                openForm={this.openCloseForm}/>
+                openForm={this.openCloseForm}
+                displayProp={this.state.display}/>
             </div>
         );
 
     }
+}
+
+class AboutForm extends Component {
+
+  render() {
+
+    const displayValue = this.props.displayProp;
+
+    let formDisplay = null;
+
+    formDisplay = (displayValue == 'none') ? formDisplay = 'block' : formDisplay = 'none';
+
+    const displayStyle = {display: formDisplay}
+
+      return(
+        <div style={displayStyle}>
+        <form onSubmit={this.props.onFormSubmit}>
+            <h3>Add About Section</h3>
+            <label>Header:<br/>
+            <input type="text" name="header" value={this.props.formValue.header} onChange={this.props.onFormChange}/>
+            </label>
+            <label>Text:
+            <textarea rows="10" className="about-textarea" name="text" value={this.props.formValue.text} onChange={this.props.onFormChange}/>
+            </label>
+            <input className="form-submit" type="submit" value="Submit"/>
+        </form>
+        </div>
+      );
+  }
 }
 
 class EditAboutForm extends Component {
@@ -164,6 +235,7 @@ class EditAboutForm extends Component {
 class AboutDivs extends Component {
 
     render() {
+
         let aboutKey;
         if (this.props.aboutObject) {
             aboutKey = this.props.aboutObject.map((key, index) => {
@@ -172,7 +244,7 @@ class AboutDivs extends Component {
                   <div className="about-container" key={index}>
                       <p className="body-header-h2"><strong>{key.header}</strong></p>
                         <button onClick={() => {this.props.editAbout(key.header, key.text, key.key); this.props.openForm();}}>Edit</button>
-                      <button onClick={() => this.props.deleteAbout(key.key)}>Delete</button>
+                        <button onClick={() => this.props.deleteAbout(key.key)}>Delete</button>
                   </div>
               );
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FileInput from './components/FileInput';
-import WebsitesContentForm from './components/WebsiteInput';
-import AboutForm from './components/AboutForm';
+//import WebsitesContentForm from './components/WebsiteInput';
+//import AboutForm from './components/AboutForm';
 import AboutAbout from './components/AboutAbout';
 import ManageWebsites from './components/ManageWebsites';
 import './css/app.css';
@@ -12,6 +12,7 @@ class Admin extends Component {
         super();
         this.showHideTab = this.showHideTab.bind(this);
     }
+
 
     showHideTab(inside){
 
@@ -57,12 +58,12 @@ class Admin extends Component {
                 <FileInput />
             </div>
             <div id="two" className="tab">
-                <WebsitesContentForm />
+                {/*<WebsitesContentForm />*/}
                 <ManageWebsites />
             </div>
             <div id="three" className="tab">
-                <AboutForm />
-                <AboutAbout />
+                  {/*<AboutForm />*/}
+                  <AboutAbout />
             </div>
           </div>
           </div>

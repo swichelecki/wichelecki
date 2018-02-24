@@ -1,6 +1,8 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
     entry: {
         index: path.join(__dirname, './src/index.js'),
@@ -9,7 +11,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
-        publicPath: '/dist'
+        //publicPath: '/dist'
     },
     watch: true,
     devServer: {
@@ -22,7 +24,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 use: [
                     {
                     loader: 'babel-loader',
@@ -36,14 +38,40 @@ module.exports = {
             {
                test: /\.css$/,
                use: ['style-loader', 'css-loader']
-             }
+             },
+             {
+               test: /\.html$/,
+               use: ['html-loader']
+             },
+             {
+               test: /\.(jpg|png)$/,
+               use: [
+                 {
+                   loader: 'file-loader',
+                   options: {
+                     name: '[name].[ext]',
+                     outputPath: 'images/',
+                     publicPath: 'images/'
+                  }
+                }
+              ]
+            }
           ]
-        },
+      },
         resolve: {
           extensions: ['.js', '.jsx'],
           alias: {
             normalize: path.join(__dirname, '/node_modules/normalize.css')
           }
         },
-
+        plugins: [
+          new HtmlWebpackPlugin({
+              filename: 'index.html',
+              template: 'src/index.html'
+          }),
+          new HtmlWebpackPlugin({
+              filename: 'admin.html',
+              template: 'src/admin.html'
+          })
+        ]
 };

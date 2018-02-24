@@ -11,8 +11,14 @@ class ManageWebsites extends Component {
       this.handleSubmit = this.handleSubmit.bind(this);
       this.updateFirebase = this.updateFirebase.bind(this);
       this.openCloseForm = this.openCloseForm.bind(this);
+      this.handleWebSubmit = this.handleWebSubmit.bind(this);
+      this.handleWebChange = this.handleWebChange.bind(this);
+      this.webChangeCallback = this.webChangeCallback.bind(this);
+
+      var uid = firebase.database().ref().child('websites').push().key;
 
       this.state = {
+        uid: uid,
         backend: '',
         frontend: '',
         header: '',
@@ -79,6 +85,8 @@ class ManageWebsites extends Component {
         key: key,
         link: link
       });
+
+      window.scrollTo(0,0);
   }
 
   handleChange(event) {
@@ -144,6 +152,8 @@ class ManageWebsites extends Component {
 
     document.getElementById('file').value = null;
 
+    window.scrollTo(0,0);
+
   }
 
   openCloseForm() {
@@ -167,25 +177,179 @@ class ManageWebsites extends Component {
             key: ''
           });
       }
+
+      window.scrollTo(0,0);
+  }
+
+  handleWebChange(event) {
+
+      const target = event.target;
+      const value = target.value;
+      const name = target.name;
+
+      this.setState({
+        [name]: value
+      }, this.webChangeCallback);
+  }
+
+  webChangeCallback(){
+
+  }
+
+  handleWebSubmit(event) {
+
+      event.preventDefault();
+
+      var headerUrlRef = firebase.database().ref('websites');
+      var newWebsite = headerUrlRef.push();
+      var websiteImageUrlRef = firebase.database().ref().child('websiteImages');
+
+      newWebsite.update(this.state);
+
+      this.setState({
+        header: '',
+        image: '',
+        text: '',
+        tech: '',
+        link: '',
+        techtext: '',
+        lessons: '',
+        lessonstext: '',
+        frontend: '',
+        backend: ''
+      });
+
+      websiteImageUrlRef.set({url: ''});
+
+      document.getElementById('file').value = null;
+
   }
 
   render() {
 
         return(
           <div>
-            <EditWidgetForm stateObject={this.state}
+            <WebsiteInput
+            webSubmit={this.handleWebSubmit}
+            webChange={this.handleWebChange}
+            displayProp={this.state.display}
+            webInput={this.state}/>
+            <EditWidgetForm
+            stateObject={this.state}
             onChange={this.handleChange}
             onSubmit={this.updateFirebase}
             displayProp={this.state.display}
             cancelEdit={this.openCloseForm}/>
             <h3>Manage Websites</h3>
-            <FlexBox boxContent={this.state.dataArray}
+            <FlexBox
+            boxContent={this.state.dataArray}
             deleteWidget={this.deleteWidget}
             editWidget={this.makeWidgetEdit}
             openForm={this.openCloseForm}/>
           </div>
         );
   }
+}
+
+class WebsiteInput extends Component {
+  constructor(){
+    super();
+    this.uploadImage = this.uploadImage.bind(this);
+  }
+
+  uploadImage(event) {
+    let file = this.fileInput.files[0];
+    let websiteImage = [];
+    let websiteUrlString = '';
+
+    var storageRef = firebase.storage().ref('website/' + file.name);
+
+    var websiteImageUrlRef = firebase.database().ref().child('websiteImages');
+
+    storageRef.put(file).then(function(url) {
+
+        storageRef.getDownloadURL().then(function(url) {
+
+        websiteImage.push(url);
+
+        websiteUrlString = websiteImage[0];
+
+        var newWebsiteUrlString = websiteImageUrlRef;
+
+        newWebsiteUrlString.set({url: websiteUrlString});
+
+      });
+
+    });
+
+  }
+
+  render() {
+
+      const displayValue = this.props.displayProp;
+
+      let formDisplay = (displayValue == 'none') ? formDisplay = 'block' : formDisplay = 'none';
+
+      const displayStyle = {display: formDisplay}
+
+      const url = this.props.webInput.image;
+
+      return(
+        <div style={displayStyle}>
+        <form onSubmit={this.props.webSubmit} id="contactForm">
+            <h3>Add Website Widget</h3>
+            <label>
+                Site Name:<br/>
+                <input type="text" name="header" value={this.props.webInput.header} onChange={this.props.webChange}/>
+            </label>
+            <label>
+                Intro Text:<br/>
+                <textarea rows="10" name="text" value={this.props.webInput.text} onChange={this.props.webChange}/>
+            </label>
+            <label>
+                Site Image:<br/>
+                <input type="file" id="file"
+                  onChange={this.uploadImage}
+                  ref={input => {
+                    this.fileInput = input;
+                  }}
+                />
+                <img src={url} className="file-image"/>
+            </label>
+            <label>
+                Website URL:<br/>
+                <input type="text" name="link" value={this.props.webInput.link} onChange={this.props.webChange}/>
+            </label>
+            <label>
+                Technology:<br/>
+                <input type="text" name="tech" value={this.props.webInput.tech} onChange={this.props.webChange}/>
+            </label>
+            <label>
+                Technology Text:<br/>
+                <textarea rows="10" name="techtext" value={this.props.webInput.techtext} onChange={this.props.webChange}/>
+            </label>
+            <label>
+                Frontend:<br/>
+                <input type="text" name="frontend" value={this.props.webInput.frontend} onChange={this.props.webChange}/>
+            </label>
+            <label>
+                Backend:<br/>
+                <input type="text" name="backend" value={this.props.webInput.backend} onChange={this.props.webChange}/>
+            </label>
+            <label>
+                Lessons Learned:<br/>
+                <input type="text" name="lessons" value={this.props.webInput.lessons} onChange={this.props.webChange}/>
+            </label>
+            <label>
+                Lessons Learned Text:<br/>
+                <textarea rows="10" name="lessonstext" value={this.props.webInput.lessonstext} onChange={this.props.webChange}/>
+            </label>
+            <input className="form-submit" type="submit" value="Submit"/>
+        </form>
+        </div>
+      );
+
+    }
 }
 
 class EditWidgetForm extends Component {
@@ -250,7 +414,7 @@ class EditWidgetForm extends Component {
             </label>
             <label>
                 Website URL:<br/>
-                <input type="text" name="link" value={this.props.stateObject.link} onChange={this.handleChange}/>
+                <input type="text" name="link" value={this.props.stateObject.link} onChange={this.props.onChange}/>
             </label>
             <label>
                 Technology:<br/>
