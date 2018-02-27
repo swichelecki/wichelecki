@@ -27,7 +27,7 @@
 14 verbose stack     at maybeClose (internal/child_process.js:877:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
 15 verbose pkgid swichelecki@1.0.0
-16 verbose cwd /Users/swichelecki/React/swichelecki
+16 verbose cwd /Users/swichelecki/React/swichelecki/src/images
 17 error Darwin 14.5.0
 18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "webpack" "-p"
 19 error node v6.9.1
