@@ -18,9 +18,9 @@ module.exports = {
         admin: path.join(__dirname, './src/index_admin.js')
     },
     output: {
-        path: path.resolve(__dirname + '/dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',
-        //publicPath: '/dist'
+        publicPath: '/dist'
     },
     watch: true,
     devServer: {
