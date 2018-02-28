@@ -1,15 +1,16 @@
 var path = require('path');
 var webpack = require('webpack');
 
-/*var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var extractPlugin = new ExtractTextPlugin({
-    filename: 'main.css',
+    filename: '[name].css',
+    allChunks: true
 });
 
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var CleanWebpackPlugin = require('clean-webpack-plugin');*/
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -17,9 +18,9 @@ module.exports = {
         admin: path.join(__dirname, './src/index_admin.js')
     },
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname + '/dist'),
         filename: '[name].bundle.js',
-        publicPath: '/dist'
+        //publicPath: '/dist'
     },
     watch: true,
     devServer: {
@@ -45,10 +46,10 @@ module.exports = {
             },
             {
                test: /\.css$/,
-              /* use: extractPlugin.extract({
+               use: extractPlugin.extract({
                  use: ['css-loader']
-               }), */
-               use: ['style-loader', 'css-loader']
+               })//,
+              // use: ['style-loader', 'css-loader']
              },
              {
                test: /\.html$/,
@@ -61,7 +62,7 @@ module.exports = {
                    loader: 'file-loader',
                    options: {
                      name: '[name].[ext]',
-                     outputPath: 'src/images/',
+                     outputPath: 'images/',
                      publicPath: 'images/'
                   }
                 }
@@ -70,21 +71,23 @@ module.exports = {
           ]
       },
       resolve: {
-          extensions: ['.js', '.jsx'],
+        //  extensions: ['.js', '.jsx'],
           alias: {
             normalize: path.join(__dirname, '/node_modules/normalize.css')
           }
       },
       plugins: [
-        /*  new HtmlWebpackPlugin({
+          new HtmlWebpackPlugin({
               filename: 'index.html',
-              template: 'src/index.html'
+              template: 'src/index.html',
+              chunks: []
           }),
           new HtmlWebpackPlugin({
               filename: 'admin.html',
-              template: 'src/admin.html'
+              template: 'src/admin.html',
+              chunks: []
           }),
           new CleanWebpackPlugin(['dist']),
-           extractPlugin*/
+          extractPlugin
       ]
 };
