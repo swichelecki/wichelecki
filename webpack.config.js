@@ -5,7 +5,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var extractPlugin = new ExtractTextPlugin({
     filename: '[name].css',
-    allChunks: true
+    allChunks: true,
+    disable: false
 });
 
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -47,9 +48,10 @@ module.exports = {
             {
                test: /\.css$/,
                use: extractPlugin.extract({
+                 fallback: ['style-loader'],
                  use: ['css-loader']
-               })//,
-              // use: ['style-loader', 'css-loader']
+               }),
+               //use: ['style-loader', 'css-loader']
              },
              {
                test: /\.html$/,
@@ -80,12 +82,12 @@ module.exports = {
           new HtmlWebpackPlugin({
               filename: 'index.html',
               template: 'src/index.html',
-              chunks: []
+              chunks: ['index']
           }),
           new HtmlWebpackPlugin({
               filename: 'admin.html',
               template: 'src/admin.html',
-              chunks: []
+              chunks: ['admin']
           }),
           new CleanWebpackPlugin(['dist']),
           extractPlugin
