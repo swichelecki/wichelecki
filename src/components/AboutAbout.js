@@ -99,6 +99,8 @@ class AboutAbout extends Component {
           key: '',
           display: 'none'
         });
+
+        window.scrollTo(0,0);
     }
 
     openCloseForm() {
@@ -115,6 +117,7 @@ class AboutAbout extends Component {
           });
       }
 
+        window.scrollTo(0,0);
     }
 
     handleFormChange(event) {
@@ -146,6 +149,7 @@ class AboutAbout extends Component {
             text: ''
         });
 
+        window.scrollTo(0,0);
     }
 
     render() {

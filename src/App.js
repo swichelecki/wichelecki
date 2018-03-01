@@ -8,6 +8,7 @@ import './css/header.css';
 import './css/body.css';
 import './css/about.css';
 import './css/footer.css';
+import './images/test-icon.png';
 
 class App extends Component {
 

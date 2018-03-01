@@ -85,8 +85,6 @@ class ManageWebsites extends Component {
         key: key,
         link: link
       });
-
-      window.scrollTo(0,0);
   }
 
   handleChange(event) {
@@ -222,6 +220,8 @@ class ManageWebsites extends Component {
       websiteImageUrlRef.set({url: ''});
 
       document.getElementById('file').value = null;
+
+      window.scrollTo(0,0);
 
   }
 

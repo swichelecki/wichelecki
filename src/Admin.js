@@ -6,6 +6,7 @@ import AboutAbout from './components/AboutAbout';
 import ManageWebsites from './components/ManageWebsites';
 import './css/app.css';
 import './css/admin.css';
+import './images/test-icon.png';
 
 class Admin extends Component {
     constructor() {
