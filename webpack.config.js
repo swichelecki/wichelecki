@@ -1,5 +1,5 @@
 var path = require('path');
-//var webpack = require('webpack');
+var webpack = require('webpack');
 
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -23,14 +23,14 @@ module.exports = {
         filename: '[name].bundle.js',
         //publicPath: '/dist'
     },
-    watch: true,
+  /*  watch: true,
     devServer: {
         contentBase: __dirname + "/src",
         filename: '.dist/[name].bundle.js',
         inline: true,
         host: '0.0.0.0',
         port: 8080,
-    },
+    },*/
     module: {
         rules: [
             {
