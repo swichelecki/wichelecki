@@ -14,6 +14,7 @@ class ManageWebsites extends Component {
       this.handleWebSubmit = this.handleWebSubmit.bind(this);
       this.handleWebChange = this.handleWebChange.bind(this);
       this.webChangeCallback = this.webChangeCallback.bind(this);
+      this.deleteConfirm = this.deleteConfirm.bind(this);
 
       var uid = firebase.database().ref().child('websites').push().key;
 
@@ -63,6 +64,14 @@ class ManageWebsites extends Component {
             image: snap.val()
           });
       });
+  }
+
+  deleteConfirm(key) {
+      let deleteAbout = confirm("Are you sure you want to delete this?");
+
+        if (deleteAbout == true) {
+            this.deleteWidget(key);
+        }
   }
 
   deleteWidget(key) {
@@ -243,7 +252,7 @@ class ManageWebsites extends Component {
             <h3>Manage Websites</h3>
             <FlexBox
             boxContent={this.state.dataArray}
-            deleteWidget={this.deleteWidget}
+            deleteWidget={this.deleteConfirm}
             editWidget={this.makeWidgetEdit}
             openForm={this.openCloseForm}/>
           </div>

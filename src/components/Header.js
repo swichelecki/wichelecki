@@ -102,13 +102,13 @@ class Header extends Component {
               <div id="resume-wrapper" style={resumeWrapper}>
               </div>
               <header id="head" className="header clearfix">
-                  <h2 className="header-h2 clearfix">Lorum Ipsum Dolor</h2>
-                  <button className="header-button" onClick={this.showResume}>Lorumi</button>
-                  <p className="header-p"><a href="mailto:swichelecki@gmail.com">lorumipsum@dolor.com</a></p>
+                  <h2 className="header-h2 clearfix">Steve Wichelecki</h2>
+                  <button className="header-button" onClick={this.showResume}>Resume</button>
+                  <p className="header-p"><a href="mailto:swichelecki@gmail.com">swichelecki@gmail.com</a></p>
               </header>
               <section className="subheader">
-                  <p className="subheader-p">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <h3 className="subheader-h2">Lorem ipsum dolor sit amet consectetur</h3>
+                  <p className="subheader-p">My name is Steve Wichelecki, and I’ve been learning web development for nearly two years now.</p>
+                  <h3 className="subheader-h2">Keep scrolling to learn more about me.</h3>
               </section>
               <img src={this.state.url}/>
           </div>
@@ -124,7 +124,7 @@ class Resume extends Component {
 
         return(
 <div>
-<button className="header-button" onClick={this.props.hideResume}><i className="fa fa-times" aria-hidden="true"></i></button>
+<button className="header-button-x" onClick={this.props.hideResume}><i className="fa fa-times" aria-hidden="true"></i></button>
 <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempus neque vel massa consequat scelerisque. Aenean varius felis et velit blandit maximus ut sit amet arcu. Morbi semper tortor in tortor vulputate ultricies. Praesent massa libero, tristique a aliquam at, efficitur id erat. Integer pellentesque libero blandit, semper eros et, ultrices erat. Praesent nibh sem, laoreet vel accumsan lobortis, pulvinar in sapien. Aliquam id pharetra lectus, sed porta tellus. Sed ut placerat ligula. Vivamus nec arcu vel lacus accumsan lacinia. Integer semper, sem quis blandit imperdiet, neque justo egestas velit, ut condimentum odio justo commodo elit.
 </p>

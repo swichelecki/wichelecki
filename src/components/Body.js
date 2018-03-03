@@ -36,7 +36,7 @@ class Body extends Component {
             <div>
                 <section className="container">
                     <div className="body-header">
-                        <h2 className="body-header-h2">Lorem ipsum dolor sit amet consectetur</h2>
+                        <h2 className="body-header-h2">Take a look at some of my work.</h2>
                     </div>
                     <FlexBox boxContent={this.state.dataArray} />
                 </section>

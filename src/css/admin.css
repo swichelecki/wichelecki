@@ -127,14 +127,14 @@ input[type="submit"].form-submit {
   display: block;
   width: 100%;
   background-color: #f7f7f7;
-  min-height: 700px;
+  min-height: 900px;
 }
 
 .tab {
   display: none;
   padding: 3rem 0 3rem 3rem;
   background-color: #f7f7f7;
-  min-height: 700px;
+  min-height: 900px;
 }
 
 .li-background {
@@ -154,4 +154,39 @@ input[type="submit"].form-submit {
 .admin-header h3 {
   padding: 0;
   color: #555;
+}
+
+@media (min-width: 320px) and (max-width: 645px) {
+  .tab-wrapper {
+    position: static;
+    top: 0;
+    padding-left: 0;
+  }
+
+  .admin-ul {
+    position: static;
+    list-style: none;
+    line-height: 2;
+    font-size: 18px;
+    margin-left: -25px;
+    width: 108%;
+    overflow: hidden;
+  }
+
+  .file-image {
+    width: 90%;
+  }
+
+  input[type="text"] {
+    width: 90%;
+  }
+
+  textarea {
+    width: 90%;
+  }
+
+  textarea.about-textarea {
+    width: 90%;
+  }
+
 }

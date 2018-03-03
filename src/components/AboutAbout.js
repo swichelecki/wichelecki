@@ -14,6 +14,7 @@ class AboutAbout extends Component {
       this.handleFormChange = this.handleFormChange.bind(this);
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
       this.handleFormChange = this.handleFormChange.bind(this);
+      this.deleteConfirm = this.deleteConfirm.bind(this);
       this.state = {
         header: '',
         text: '',
@@ -41,6 +42,14 @@ class AboutAbout extends Component {
             aboutArray: about
         });
 
+    }
+
+    deleteConfirm(key) {
+        let deleteAbout = confirm("Are you sure you want to delete this?");
+
+          if (deleteAbout == true) {
+              this.deleteAbout(key);
+          }
     }
 
     deleteAbout(key) {
@@ -170,7 +179,7 @@ class AboutAbout extends Component {
                 cancelEdit={this.openCloseForm}/>
                 <h3>Manage About Section</h3>
                 <AboutDivs
-                deleteAbout={this.deleteAbout}
+                deleteAbout={this.deleteConfirm}
                 aboutObject={this.state.aboutArray}
                 editAbout={this.editAboutItem}
                 openForm={this.openCloseForm}

@@ -84,3 +84,18 @@ a {
     }
 
 }
+
+@media (min-width: 320px) and (max-width: 645px) {
+  .body-header {
+    padding:  1rem  1rem;
+  }
+
+  .body-header-h2 {
+      font-size: 20px;
+  }
+
+  h2 {
+      font-size: 20px;
+  }
+
+}
