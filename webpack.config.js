@@ -13,6 +13,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
+var GoogleFontsPlugin = require('google-fonts-webpack-plugin');
+
 module.exports = {
     entry: {
         index: path.join(__dirname, './src/index.js'),
@@ -58,7 +60,7 @@ module.exports = {
                use: ['html-loader']
              },
              {
-               test: /\.(jpg|png)$/,
+               test: /\.(jpg|png|woff|woff2)$/,
                use: [
                  {
                    loader: 'file-loader',
@@ -90,6 +92,12 @@ module.exports = {
               chunks: ['admin']
           }),
           new CleanWebpackPlugin(['dist']),
-          extractPlugin
+          extractPlugin,
+          new GoogleFontsPlugin({
+              fonts: [{
+                family: 'Open Sans',
+                variants: ['400', '800', '600', '700', '300']
+              }]
+          })
       ]
 };
