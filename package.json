@@ -57,6 +57,7 @@
     "react-fontawesome": "^1.6.1",
     "style-loader": "^0.19.1",
     "typeface-open-sans": "0.0.54",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "google-fonts-webpack-plugin": "^0.4.4"
   }
 }
