@@ -18,7 +18,7 @@
   line-height: 1.5rem;
 }
 
-@media (min-width: 230px) and (max-width: 645px) {
+@media (min-width: 320px) and (max-width: 645px) {
 
     .about-container {
         padding-left: 2rem !important;
@@ -29,4 +29,10 @@
       text-align: left;
 
     }
+
+    h2.body-header-h2.about-header {
+      text-align: left;
+    }
+
+
 }

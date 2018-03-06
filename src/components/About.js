@@ -49,7 +49,7 @@ class AboutDivs extends Component {
               return(
                   <div className="about-wrapper">
                       <div className="about-container" key={index}>
-                          <h2 className="body-header-h2">{key.header}</h2>
+                          <h2 className="body-header-h2 about-header">{key.header}</h2>
                           <p className="about-p">{key.text}</p>
                       </div>
                   </div>

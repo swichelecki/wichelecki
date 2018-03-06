@@ -65,10 +65,10 @@ class FlexBox extends Component {
                       <p className="flex-p">{data.text}</p>
                       <h2>{data.tech}</h2>
                       <p className="flex-p">{data.techtext}</p>
-                      <span className="flex-span">Lorem ipsum: </span>
+                      <span className="flex-span">Frontend: </span>
                       <p className="flex-p-inline">{data.frontend}</p>
                       <br/><br/>
-                      <span className="flex-span">Lorem ipsum: </span>
+                      <span className="flex-span">Backend: </span>
                       <p className="flex-p-inline">{data.backend}</p>
                       <h2>{data.lessons}</h2>
                       <p className="flex-p">{data.lessonstext}</p>

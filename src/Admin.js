@@ -44,7 +44,7 @@ class Admin extends Component {
         return(
           <div>
           <div className="admin-header">
-            <h2>Lorem Ipsem Content Management System</h2>
+            <h2>Wichelecki.com Content Management System</h2>
             <h3>The database is set to read only (naturally) but please click around.</h3>
           </div>
           <div className="tab-wrapper">

@@ -29,6 +29,11 @@
   font-weight: bold;
 }
 
+.header-button:hover {
+  text-decoration: underline;
+  color: #ed1b24;
+}
+
 .header-button-x {
   float: right;
   margin-right: 5%;
@@ -52,6 +57,11 @@
 .header-p a {
   text-decoration: none;
   color: #000;
+}
+
+.header-p a:hover {
+  text-decoration: underline;
+  color: #ed1b24;
 }
 
 .subheader {

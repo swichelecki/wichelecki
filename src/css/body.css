@@ -29,6 +29,11 @@ a {
   color: #2a2a2a;
 }
 
+#box a h2:hover {
+  text-decoration: underline;
+  color: #ed1b24;
+}
+
 .body-header {
   padding: 2rem 2rem;
 }
