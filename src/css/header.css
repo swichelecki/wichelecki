@@ -46,6 +46,10 @@
   color: #000;
 }
 
+.header-button-x:hover {
+  color: #ed1b24;
+}
+
 .header-p{
   float: right;
   clear: both;
@@ -91,9 +95,10 @@
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
   max-width: 40rem;
-  height: 100rem;
+  height: 215rem;
   background-color: #f0f0f0;
   box-shadow: 0px 0px 15px 1px #333333;
+  line-height: 1.5rem;
 }
 
 #resume-wrapper {
@@ -113,6 +118,59 @@
   top: -50px;
   right: -20px;
   font-size: 30px;
+}
+
+.resume-ul{
+  list-style: none;
+}
+
+.resume-ul li {
+  text-align: center;
+}
+
+.phone-num {
+  position: relative;
+  left: -30px;
+}
+
+.email-address {
+  position: relative;
+  left: -30px;
+}
+
+.res-url {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.res-url:hover {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #ed1b24;
+}
+
+.footer-button-res {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #2a2a2a;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.footer-button-res a {
+  text-decoration: none;
+  color: #2a2a2a;
+}
+
+.footer-button-res a:hover {
+  text-decoration: underline;
+  color: #ed1b24;
 }
 
 @media (min-width: 481px) and (max-width: 675px) {
@@ -165,5 +223,27 @@
       margin-left: 20px;
       margin-top: 10px;
     }
+
+}
+
+@media (min-width: 400px) and (max-width: 645px) {
+  #resume {
+    height: 270rem;
+  }
+
+  #resume-wrapper {
+    opacity: 1;
+  }
+
+}
+
+@media (min-width: 320px) and (max-width: 399px) {
+  #resume {
+    height: 318rem;
+  }
+
+  #resume-wrapper {
+    opacity: 1;
+  }
 
 }
