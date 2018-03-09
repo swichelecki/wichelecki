@@ -1,22 +1,22 @@
-.footer-button-one {
+button.footer-button-one {
     margin: 0 auto;
     display: block;
     padding: 55px 0 0 0;
     background-color: transparent;
     border: none;
     outline: none;
-    cursor: pointer;
     color: #2a2a2a;
     font-weight: bold;
     font-size: 18px;
 }
 
-.footer-button-one a:hover {
+a button.footer-button-one:hover {
   text-decoration: underline;
   color: #ed1b24;
+  cursor: pointer;
 }
 
-.footer-button-two {
+button.footer-button-two {
     margin: 0 auto;
     display: block;
     padding: 20px 5% 80px 5%;
@@ -29,12 +29,13 @@
     font-size: 18px;
 }
 
-.footer-button-two a {
+a button.footer-button-two {
   text-decoration: none;
   color: #2a2a2a;
+  cursor: pointer;
 }
 
-.footer-button-two a:hover {
+a button.footer-button-two:hover {
   text-decoration: underline;
   color: #ed1b24;
 }

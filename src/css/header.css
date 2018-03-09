@@ -34,11 +34,14 @@
   color: #ed1b24;
 }
 
-.header-button-x {
-  float: right;
-  margin-right: 5%;
-  margin-top: 1rem;
-  padding: .2rem;
+#res-container{
+  position: relative;
+}
+
+button.header-button-x {
+  position: absolute;
+  top: -5px;
+  right: 0px;
   background-color: transparent;
   border: none;
   outline: none;
@@ -46,8 +49,37 @@
   color: #000;
 }
 
-.header-button-x:hover {
+button.header-button-x:hover {
   color: #ed1b24;
+}
+
+button.header-button-x .fa-times {
+  /*position: absolute;*/
+  top: -5px;
+  right: 0px;
+  font-size: 30px;
+}
+
+button.header-button-x-bottom {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #000;
+}
+
+button.header-button-x-bottom:hover {
+  color: #ed1b24;
+}
+
+button.header-button-x-bottom .fa-times {
+  /*position: absolute;*/
+  bottom: 0px;
+  right: 0px;
+  font-size: 30px;
 }
 
 .header-p{
@@ -91,11 +123,18 @@
   display: none;
   z-index: 2;
   margin: 0 auto;
-  padding: 2rem;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
   max-width: 40rem;
-  height: 215rem;
+}
+
+#inner-rel{
+  z-index: 2;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem 2rem;
+  position: relative;
+  top: 0; left: 0; bottom: 0; right: 0;
+  max-width: 40rem;
   background-color: #f0f0f0;
   box-shadow: 0px 0px 15px 1px #333333;
   line-height: 1.5rem;
@@ -113,29 +152,15 @@
   opacity: .7;
 }
 
-.fa-times {
-  position: relative;
-  top: -50px;
-  right: -20px;
-  font-size: 30px;
-}
-
-.resume-ul{
+ul.resume-ul{
   list-style: none;
+  padding-left: 0;
+  padding-top: 2rem;
+  margin: 0 auto;
 }
 
-.resume-ul li {
+ul.resume-ul li {
   text-align: center;
-}
-
-.phone-num {
-  position: relative;
-  left: -30px;
-}
-
-.email-address {
-  position: relative;
-  left: -30px;
 }
 
 .res-url {
@@ -227,9 +252,6 @@
 }
 
 @media (min-width: 400px) and (max-width: 645px) {
-  #resume {
-    height: 270rem;
-  }
 
   #resume-wrapper {
     opacity: 1;
@@ -238,9 +260,6 @@
 }
 
 @media (min-width: 320px) and (max-width: 399px) {
-  #resume {
-    height: 318rem;
-  }
 
   #resume-wrapper {
     opacity: 1;

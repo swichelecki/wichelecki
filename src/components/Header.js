@@ -99,7 +99,9 @@ class Header extends Component {
         return(
           <div>
               <div id="resume" style={resume}>
-              <Resume hideResume={this.hideResume}/>
+                  <div id="inner-rel">
+                      <Resume hideResume={this.hideResume}/>
+                  </div>
               </div>
               <div id="resume-wrapper" style={resumeWrapper}>
               </div>
@@ -125,16 +127,16 @@ class Resume extends Component {
     render() {
 
         return(
-<div>
+<div id="res-container">
 <button className="header-button-x" onClick={this.props.hideResume}><i className="fa fa-times" aria-hidden="true"></i></button>
 <ul className="resume-ul">
 <li><strong>Steve Wichelecki</strong></li>
 <li>2857 W. Shakespeare</li>
 <li>Chicago, IL 60647</li>
-<li className="phone-num">(773) 612-4221</li>
-<li className="email-address"><a className="res-url" href="mailto:swichelecki@gmail.com">swichelecki@gmail.com</a></li>
+<li>(773) 612-4221</li>
+<li><a className="res-url" href="mailto:swichelecki@gmail.com">swichelecki@gmail.com</a></li>
 </ul>
-<p>
+<br /><br />
 To Whom It May Concern,<br /><br />
 My name is Steve Wichelecki, and I’ve been learning web development for nearly two years now. I am currently a Web Developer and Web Content Editor for a national broadcasting company, and prior to that I was a Writer/Editor for business-to-business publications.
 <br /><br />
@@ -142,14 +144,14 @@ Although I have fewer than two years of experience, I have made solid progress a
 <br /><br />
 To date, my biggest accomplishment has been the website for <em>Svengoolie</em>, a program shown nationally on MeTV. I did both the front-end and back-end work for <a className="res-url" href="http://svengoolie.com/" target="_blank">svengoolie.com</a>, which was launched in early 2018.
 <br /><br />
-At the time of writing, my most recent work includes a variety of front- and back-end updates to the website for Decades TV Network, <a className="res-url" href="http://decades.com/" target="_blank">decades.com</a>. Also, I have launched a portfolio website (you are here now) to tell perspective employers more about myself. I built it using ReactJS and also created a <a className="res-url" href="https://wichelecki.com/admin" target="_blank">CRUD CMS</a> to manage persistent data.
+At the time of writing, my most recent work includes a variety of front- and back-end updates to the website for Decades TV Network, <a className="res-url" href="http://decades.com/" target="_blank">decades.com</a>. Also, I have launched a portfolio website (you are here now) to tell prospective employers more about myself. I built it using ReactJS and also created a <a className="res-url" href="http://wichelecki.com/admin.html" target="_blank">CRUD CMS</a> to manage persistent data.
 <br /><br />
 Currently, I still have a lot of content editor responsibilities, so I am looking to transition to a position that is 100% development.
 I would like to learn more about the available position and would appreciate hearing from you.
 <br /><br />
 Sincerely,<br />
 Steve Wichelecki<br />
-</p>
+<br /><br />
 <h3>Work Experience</h3>
 <h4>Weigel Broadcasting (Section 1)<br />
 Winter 2017 to Present</h4>
@@ -215,8 +217,8 @@ September 2006 to April 2007</h4>
 ● Graduated with honors: <em>Cum laude</em><br />
 ● Graduated with high departmental distinction—English<br />
 ● Made dean’s list four out of five semesters<br />
-<button className="footer-button-res"><a href="https://drive.google.com/uc?export=download&id=1toi6KDiDm-6lg3Vv4VObWdRLkJuBYzUm" download>Download Resume</a></button>
-<button className="header-button-x" onClick={this.props.hideResume}><i className="fa fa-times" aria-hidden="true"></i></button>
+<button className="footer-button-res"><a href="https://drive.google.com/uc?export=download&id=1II7ANUQDXi1iBLXPv22UxZtR0P4wO9Rs" download>Download Resume</a></button>
+<button className="header-button-x-bottom" onClick={this.props.hideResume}><i className="fa fa-times" aria-hidden="true"></i></button>
 </div>
       );
 

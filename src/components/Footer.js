@@ -5,8 +5,8 @@ function Footer() {
 
   return(
       <div>
-      <button className="footer-button-one"><a href="https://drive.google.com/uc?export=download&id=1toi6KDiDm-6lg3Vv4VObWdRLkJuBYzUm" download>Download Resume</a></button>
-      <button className="footer-button-two"><a href="/admin.html" target="_blank">Check out this website's CRUD CMS</a></button>
+      <a href="https://drive.google.com/uc?export=download&id=1II7ANUQDXi1iBLXPv22UxZtR0P4wO9Rs" download><button className="footer-button-one">Download Resume</button></a>
+      <a href="/admin.html" target="_blank"><button className="footer-button-two">Check out this website's CRUD CMS</button></a>
       </div>
   );
 
