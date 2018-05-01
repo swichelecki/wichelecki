@@ -8,12 +8,10 @@ class AboutAbout extends Component {
       this.deleteAbout = this.deleteAbout.bind(this);
       this.editAboutItem = this.editAboutItem.bind(this);
       this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      this.onChangeCallback = this.onChangeCallback.bind(this);
       this.updateFirebase = this.updateFirebase.bind(this);
       this.openCloseForm = this.openCloseForm.bind(this);
-      this.handleFormChange = this.handleFormChange.bind(this);
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
-      this.handleFormChange = this.handleFormChange.bind(this);
       this.deleteConfirm = this.deleteConfirm.bind(this);
       this.state = {
         header: '',
@@ -23,10 +21,15 @@ class AboutAbout extends Component {
         aboutArray: []
       };
 
+    }
+
+    componentDidMount() {
+
       let app = firebase.database().ref('about');
       app.on('value', snapshot => {
           this.getData(snapshot.val());
       });
+
     }
 
     getData(values) {
@@ -72,13 +75,13 @@ class AboutAbout extends Component {
 
       this.setState({
             [name]: value
-          }, this.handleSubmit);
+          }, this.onChangeCallback);
 
     }
 
-    //handleSubmit callback keeps state in sync with keystrokes
+    //onChangeCallback callback keeps state in sync with keystrokes
 
-    handleSubmit() {
+    onChangeCallback() {
 
     }
 
@@ -129,29 +132,17 @@ class AboutAbout extends Component {
         window.scrollTo(0,0);
     }
 
-    handleFormChange(event) {
-
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        }, this.handletheChange);
-    }
-
-    handletheChange(){
-
-    }
-
     handleFormSubmit(event) {
 
         event.preventDefault();
 
-        var AboutUrlRef = firebase.database().ref('about');
-        var newAbout = AboutUrlRef.push();
+        let AboutUrlRef = firebase.database().ref('about');
+        let newAbout = AboutUrlRef.push();
 
-        newAbout.update(this.state);
+        let aboutObject = this.state;
+        delete aboutObject.aboutArray;
+
+        newAbout.update(aboutObject);
 
         this.setState({
             header: '',
@@ -161,29 +152,38 @@ class AboutAbout extends Component {
         window.scrollTo(0,0);
     }
 
+    componentWillUnmount() {
+
+      let app = firebase.database().ref('about');
+      app.off();
+
+    }
+
     render() {
 
         return(
             <div>
                 <AboutForm
                 onFormSubmit={this.handleFormSubmit}
-                onFormChange={this.handleFormChange}
+                onChange={this.handleChange}
                 formValue={this.state}
                 displayProp={this.state.display}
                 />
                 <EditAboutForm
-                editAboutObject={this.state}
+                formValue={this.state}
                 onChange={this.handleChange}
                 onSubmit={this.updateFirebase}
                 displayProp={this.state.display}
-                cancelEdit={this.openCloseForm}/>
+                cancelEdit={this.openCloseForm}
+                />
                 <h3>Manage About Section</h3>
                 <AboutDivs
                 deleteAbout={this.deleteConfirm}
                 aboutObject={this.state.aboutArray}
                 editAbout={this.editAboutItem}
                 openForm={this.openCloseForm}
-                displayProp={this.state.display}/>
+                displayProp={this.state.display}
+                />
             </div>
         );
 
@@ -207,10 +207,10 @@ class AboutForm extends Component {
         <form onSubmit={this.props.onFormSubmit}>
             <h3>Add About Section</h3>
             <label>Header:<br/>
-            <input type="text" name="header" value={this.props.formValue.header} onChange={this.props.onFormChange}/>
+            <input type="text" name="header" value={this.props.formValue.header} onChange={this.props.onChange}/>
             </label>
             <label>Text:
-            <textarea rows="10" className="about-textarea" name="text" value={this.props.formValue.text} onChange={this.props.onFormChange}/>
+            <textarea rows="10" className="about-textarea" name="text" value={this.props.formValue.text} onChange={this.props.onChange}/>
             </label>
             <input className="form-submit" type="submit" value="Submit"/>
         </form>
@@ -231,10 +231,10 @@ class EditAboutForm extends Component {
                 <form onSubmit={this.props.onSubmit}>
                     <h3>Update About Section</h3>
                     <label>Header:<br/>
-                    <input type="text" name="header" value={this.props.editAboutObject.header} onChange={this.props.onChange}/>
+                    <input type="text" name="header" value={this.props.formValue.header} onChange={this.props.onChange}/>
                     </label>
                     <label>Text:
-                    <textarea rows="10" className="about-textarea" name="text" value={this.props.editAboutObject.text} onChange={this.props.onChange}/>
+                    <textarea rows="10" className="about-textarea" name="text" value={this.props.formValue.text} onChange={this.props.onChange}/>
                     </label>
                     <input type="submit" value="Submit"/>
                 </form>

@@ -52,7 +52,7 @@ class FlexBox extends Component {
         let contentBlock;
         if (this.props.boxContent) {
 
-            contentBlock = this.props.boxContent.map((data, index) => {
+            contentBlock = this.props.boxContent.slice(0).reverse().map((data, index) => {
 
               return(
                   <div id="box" key={index} className="flexbox">

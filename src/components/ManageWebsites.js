@@ -3,17 +3,15 @@ import * as firebase from 'firebase';
 import _ from 'lodash';
 
 class ManageWebsites extends Component {
-  constructor() {
-      super();
+  constructor(props) {
+      super(props);
       this.deleteWidget = this.deleteWidget.bind(this);
       this.makeWidgetEdit = this.makeWidgetEdit.bind(this);
       this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
       this.updateFirebase = this.updateFirebase.bind(this);
       this.openCloseForm = this.openCloseForm.bind(this);
       this.handleWebSubmit = this.handleWebSubmit.bind(this);
-      this.handleWebChange = this.handleWebChange.bind(this);
-      this.webChangeCallback = this.webChangeCallback.bind(this);
+      this.onChangeCallback = this.onChangeCallback.bind(this);
       this.deleteConfirm = this.deleteConfirm.bind(this);
 
       var uid = firebase.database().ref().child('websites').push().key;
@@ -34,9 +32,22 @@ class ManageWebsites extends Component {
         display: 'none',
         dataArray: []
       };
+
+  }
+
+  componentDidMount() {
+
       let app = firebase.database().ref('websites');
       app.on('value', snapshot => {
-          this.getData(snapshot.val());
+        this.getData(snapshot.val());
+      });
+
+      const rootRef = firebase.database().ref().child('websiteImages');
+      const imageRef = rootRef.child('url');
+      imageRef.on('value', snap => {
+          this.setState({
+            image: snap.val()
+          });
       });
   }
 
@@ -54,16 +65,6 @@ class ManageWebsites extends Component {
           dataArray: websites
         });
 
-  }
-
-  componentDidMount() {
-      const rootRef = firebase.database().ref().child('websiteImages');
-      const imageRef = rootRef.child('url');
-      imageRef.on('value', snap => {
-          this.setState({
-            image: snap.val()
-          });
-      });
   }
 
   deleteConfirm(key) {
@@ -104,27 +105,24 @@ class ManageWebsites extends Component {
 
     this.setState({
           [name]: value
-        }, this.handleSubmit);
+        }, this.onChangeCallback);
 
   }
 
-  //handleSubmit callback keeps state in sync with keystrokes
+  //onChangeCallback callback keeps state in sync with keystrokes
 
-  handleSubmit() {
+  onChangeCallback() {
 
   }
 
   updateFirebase(event) {
+
     event.preventDefault();
 
     let finalObject = this.state;
     delete finalObject.dataArray;
 
-    console.log(finalObject);
-
     let key = finalObject.key;
-
-    console.log(key);
 
     let widgetToUpdate = firebase.database().ref().child('websites').child(key);
 
@@ -188,30 +186,18 @@ class ManageWebsites extends Component {
       window.scrollTo(0,0);
   }
 
-  handleWebChange(event) {
-
-      const target = event.target;
-      const value = target.value;
-      const name = target.name;
-
-      this.setState({
-        [name]: value
-      }, this.webChangeCallback);
-  }
-
-  webChangeCallback(){
-
-  }
-
   handleWebSubmit(event) {
 
       event.preventDefault();
 
-      var headerUrlRef = firebase.database().ref('websites');
-      var newWebsite = headerUrlRef.push();
-      var websiteImageUrlRef = firebase.database().ref().child('websiteImages');
+      let headerUrlRef = firebase.database().ref('websites');
+      let newWebsite = headerUrlRef.push();
+      let websiteImageUrlRef = firebase.database().ref().child('websiteImages');
 
-      newWebsite.update(this.state);
+      let websiteObject = this.state;
+      delete websiteObject.dataArray;
+
+      newWebsite.update(websiteObject);
 
       this.setState({
         header: '',
@@ -234,27 +220,37 @@ class ManageWebsites extends Component {
 
   }
 
+  componentWillUnmount() {
+
+    let app = firebase.database().ref('websites');
+    app.off();
+
+  }
+
   render() {
 
         return(
           <div>
             <WebsiteInput
             webSubmit={this.handleWebSubmit}
-            webChange={this.handleWebChange}
+            onChange={this.handleChange}
             displayProp={this.state.display}
-            webInput={this.state}/>
+            webInput={this.state}
+            />
             <EditWidgetForm
-            stateObject={this.state}
+            webInput={this.state}
             onChange={this.handleChange}
             onSubmit={this.updateFirebase}
             displayProp={this.state.display}
-            cancelEdit={this.openCloseForm}/>
+            cancelEdit={this.openCloseForm}
+            />
             <h3>Manage Websites</h3>
             <FlexBox
             boxContent={this.state.dataArray}
             deleteWidget={this.deleteConfirm}
             editWidget={this.makeWidgetEdit}
-            openForm={this.openCloseForm}/>
+            openForm={this.openCloseForm}
+            />
           </div>
         );
   }
@@ -309,11 +305,11 @@ class WebsiteInput extends Component {
             <h3>Add Website Widget</h3>
             <label>
                 Site Name:<br/>
-                <input type="text" name="header" value={this.props.webInput.header} onChange={this.props.webChange}/>
+                <input type="text" name="header" value={this.props.webInput.header} onChange={this.props.onChange}/>
             </label>
             <label>
                 Intro Text:<br/>
-                <textarea rows="10" name="text" value={this.props.webInput.text} onChange={this.props.webChange}/>
+                <textarea rows="10" name="text" value={this.props.webInput.text} onChange={this.props.onChange}/>
             </label>
             <label>
                 Site Image:<br/>
@@ -327,31 +323,31 @@ class WebsiteInput extends Component {
             </label>
             <label>
                 Website URL:<br/>
-                <input type="text" name="link" value={this.props.webInput.link} onChange={this.props.webChange}/>
+                <input type="text" name="link" value={this.props.webInput.link} onChange={this.props.onChange}/>
             </label>
             <label>
                 Technology:<br/>
-                <input type="text" name="tech" value={this.props.webInput.tech} onChange={this.props.webChange}/>
+                <input type="text" name="tech" value={this.props.webInput.tech} onChange={this.props.onChange}/>
             </label>
             <label>
                 Technology Text:<br/>
-                <textarea rows="10" name="techtext" value={this.props.webInput.techtext} onChange={this.props.webChange}/>
+                <textarea rows="10" name="techtext" value={this.props.webInput.techtext} onChange={this.props.onChange}/>
             </label>
             <label>
                 Frontend:<br/>
-                <input type="text" name="frontend" value={this.props.webInput.frontend} onChange={this.props.webChange}/>
+                <input type="text" name="frontend" value={this.props.webInput.frontend} onChange={this.props.onChange}/>
             </label>
             <label>
                 Backend:<br/>
-                <input type="text" name="backend" value={this.props.webInput.backend} onChange={this.props.webChange}/>
+                <input type="text" name="backend" value={this.props.webInput.backend} onChange={this.props.onChange}/>
             </label>
             <label>
                 Lessons Learned:<br/>
-                <input type="text" name="lessons" value={this.props.webInput.lessons} onChange={this.props.webChange}/>
+                <input type="text" name="lessons" value={this.props.webInput.lessons} onChange={this.props.onChange}/>
             </label>
             <label>
                 Lessons Learned Text:<br/>
-                <textarea rows="10" name="lessonstext" value={this.props.webInput.lessonstext} onChange={this.props.webChange}/>
+                <textarea rows="10" name="lessonstext" value={this.props.webInput.lessonstext} onChange={this.props.onChange}/>
             </label>
             <input className="form-submit" type="submit" value="Submit"/>
         </form>
@@ -405,11 +401,11 @@ class EditWidgetForm extends Component {
         <form onSubmit={this.props.onSubmit} id="contactForm">
             <label>
                 Site Name:<br/>
-                <input type="text" name="header" value={this.props.stateObject.header} onChange={this.props.onChange}/>
+                <input type="text" name="header" value={this.props.webInput.header} onChange={this.props.onChange}/>
             </label>
             <label>
                 Intro Text:<br/>
-                <textarea rows="10" name="text" value={this.props.stateObject.text} onChange={this.props.onChange}/>
+                <textarea rows="10" name="text" value={this.props.webInput.text} onChange={this.props.onChange}/>
             </label>
             <label>
                 Site Image:<br/>
@@ -419,35 +415,35 @@ class EditWidgetForm extends Component {
                   this.fileInput = input;
                   }}
                 />
-                <img src={this.props.stateObject.image} className="file-image"/>
+                <img src={this.props.webInput.image} className="file-image"/>
             </label>
             <label>
                 Website URL:<br/>
-                <input type="text" name="link" value={this.props.stateObject.link} onChange={this.props.onChange}/>
+                <input type="text" name="link" value={this.props.webInput.link} onChange={this.props.onChange}/>
             </label>
             <label>
                 Technology:<br/>
-                <input type="text" name="tech" value={this.props.stateObject.tech} onChange={this.props.onChange}/>
+                <input type="text" name="tech" value={this.props.webInput.tech} onChange={this.props.onChange}/>
             </label>
             <label>
                 Technology Text:<br/>
-                <textarea rows="10" name="techtext" value={this.props.stateObject.techtext} onChange={this.props.onChange}/>
+                <textarea rows="10" name="techtext" value={this.props.webInput.techtext} onChange={this.props.onChange}/>
             </label>
             <label>
                 Frontend:<br/>
-                <input type="text" name="frontend" value={this.props.stateObject.frontend} onChange={this.props.onChange}/>
+                <input type="text" name="frontend" value={this.props.webInput.frontend} onChange={this.props.onChange}/>
             </label>
             <label>
                 Backend:<br/>
-                <input type="text" name="backend" value={this.props.stateObject.backend} onChange={this.props.onChange}/>
+                <input type="text" name="backend" value={this.props.webInput.backend} onChange={this.props.onChange}/>
             </label>
             <label>
                 Lessons Learned:<br/>
-                <input type="text" name="lessons" value={this.props.stateObject.lessons} onChange={this.props.onChange}/>
+                <input type="text" name="lessons" value={this.props.webInput.lessons} onChange={this.props.onChange}/>
             </label>
             <label>
                 Lessons Learned Text:<br/>
-                <textarea rows="10" name="lessonstext" value={this.props.stateObject.lessonstext} onChange={this.props.onChange}/>
+                <textarea rows="10" name="lessonstext" value={this.props.webInput.lessonstext} onChange={this.props.onChange}/>
             </label>
             <input type="submit" value="Submit"/>
         </form>
