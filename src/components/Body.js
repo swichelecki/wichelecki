@@ -56,9 +56,9 @@ class FlexBox extends Component {
 
               return(
                   <div id="box" key={index} className="flexbox">
-                      <a href={data.link} target="_blank">
-                          <h2>{data.header}</h2>
-                      </a>
+                      <h1 className="body-h1">
+                        <a href={data.link} target="_blank">{data.header}</a>
+                      </h1>
                       <a href={data.link} target="_blank">
                           <img className="flex-image image" src={data.image}/>
                       </a>

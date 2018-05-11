@@ -48,7 +48,7 @@ textarea.about-textarea {
 
 label {
   display: block;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
 }
 
 h3 {
@@ -93,6 +93,10 @@ input[type="submit"].form-submit {
   font-size: 16px;
   border-radius: 0;
   cursor: pointer;
+}
+
+.manage-header-image-h3 {
+  padding-bottom: 1rem;
 }
 
 /* tab styles */
@@ -168,9 +172,12 @@ input[type="submit"].form-submit {
     list-style: none;
     line-height: 2;
     font-size: 18px;
-    margin-left: -25px;
-    width: 108%;
+    width: 100%;
     overflow: hidden;
+  }
+
+  .admin-ul li {
+    padding-left: 3rem;
   }
 
   .file-image {

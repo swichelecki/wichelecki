@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import FileInput from './components/FileInput';
-//import WebsitesContentForm from './components/WebsiteInput';
-//import AboutForm from './components/AboutForm';
 import AboutAbout from './components/AboutAbout';
 import ManageWebsites from './components/ManageWebsites';
 import './css/app.css';
@@ -59,11 +57,9 @@ class Admin extends Component {
                 <FileInput />
             </div>
             <div id="two" className="tab">
-                {/*<WebsitesContentForm />*/}
                 <ManageWebsites />
             </div>
             <div id="three" className="tab">
-                  {/*<AboutForm />*/}
                   <AboutAbout />
             </div>
           </div>
