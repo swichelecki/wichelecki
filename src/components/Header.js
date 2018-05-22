@@ -111,7 +111,7 @@ class Header extends Component {
                   <p className="header-p"><a href="mailto:swichelecki@gmail.com">swichelecki@gmail.com</a></p>
               </header>
               <section className="subheader">
-                  <p className="subheader-p">My name is Steve Wichelecki, and I’ve been learning web development for nearly two years now.</p>
+                  <p className="subheader-p">My name is Steve Wichelecki, and I’ve been learning web development for two years now.</p>
                   <h3 className="subheader-h2">Keep scrolling to learn more about me.</h3>
               </section>
               <img src={this.state.url}/>
@@ -137,14 +137,13 @@ class Resume extends Component {
 <li><a className="res-url" href="mailto:swichelecki@gmail.com">swichelecki@gmail.com</a></li>
 </ul>
 <br /><br />
-To Whom It May Concern,<br /><br />
-My name is Steve Wichelecki, and I’ve been learning web development for nearly two years now. I am currently a Web Developer and Web Content Editor for a national broadcasting company, and prior to that I was a Writer/Editor for business-to-business publications.
+My name is Steve Wichelecki, and I’ve been learning web development for two years now. I am currently a Web Developer and Web Content Editor for a national broadcasting company, and prior to that I was a Writer/Editor for business-to-business publications.
 <br /><br />
-Although I have fewer than two years of experience, I have made solid progress and have become a passionate developer. In July of 2016 I enrolled in the Bloc Frontend Fundamentals course, an eight-month program that taught the basics of front-end development. Since then, it’s been a natural progression of learning and building websites, both for my current workplace and for myself.
+During the past two years, I have made solid progress and have become a passionate developer. In July of 2016 I enrolled in the Bloc Frontend Fundamentals course, an eight-month program that taught the basics of front-end development. Since then, it’s been a natural progression of learning and building websites, both for my current workplace and for myself.
 <br /><br />
 To date, my biggest accomplishment has been the website for <em>Svengoolie</em>, a program shown nationally on MeTV. I did both the front-end and back-end work for <a className="res-url" href="http://svengoolie.com/" target="_blank">svengoolie.com</a>, which was launched in early 2018.
 <br /><br />
-At the time of writing, my most recent work includes a variety of front- and back-end updates to the website for Decades TV Network, <a className="res-url" href="http://decades.com/" target="_blank">decades.com</a>. Also, I have launched a portfolio website (you are here now) to tell prospective employers more about myself. I built it using ReactJS and also created a <a className="res-url" href="http://wichelecki.com/admin.html" target="_blank">CRUD CMS</a> to manage persistent data.
+At the time of writing, my most recent work includes a variety of front- and/or back-end updates to Weigel Broadcasting websites <a className="res-url" href="http://decades.com" target="_blank">decades.com</a>, <a className="res-url" href="https://metv.com" target="_blank">metv.com</a>, <a className="res-url" href="http://heroesandiconstv.com" target="_blank">heroesandiconstv.com</a> and <a className="res-url" href="https://www.wciu.com" target="_blank">wciu.com</a>. I am also currently building a website for molecular engineering company Bonumose; a dev link is available <a className="res-url" href="https://bonumose.herokuapp.com" target="_blank">here</a>. Both the Bonumose site and this portfolio site are built using React and feature a CRUD CMS to manage persistent data. Check out this website's CMS <a className="res-url" href="http://wichelecki.com/admin.html" target="_blank">here</a>.
 <br /><br />
 Currently, I still have a lot of content editor responsibilities, so I am looking to transition to a position that is 100% development.
 I would like to learn more about the available position and would appreciate hearing from you.
@@ -160,12 +159,15 @@ Winter 2017 to Present</h4>
 <h4>Duties: <em>Same as in Weigel Broadcasting (Section 2) with the addition of:</em></h4>
 ● Building and updating websites:<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a className="res-url" href="http://svengoolie.com/" target="_blank">svengoolie.com</a> (built frontend and backend)<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a className="res-url" href="http://decades.com/" target="_blank">decades.com</a> (front-end and back-end updates for 2018 network format change)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a className="res-url" href="http://decades.com/" target="_blank">decades.com</a> (front-end and back-end updates)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a className="res-url" href="https://metv.com/" target="_blank">metv.com</a> (back-end updates)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a className="res-url" href="http://heroesandiconstv.com/" target="_blank">heroesandiconstv.com</a> (front-end and back-end updates)<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <a className="res-url" href="https://www.wciu.com/" target="_blank">wciu.com</a> (front-end and back-end updates)<br />
 ● Coding HTML newsletter templates for newsletters such as <a className="res-url" href="https://mailchi.mp/metv/are-you-a-big-enough-fan-to-ace-this-mayberry-trivia-challenge" target="_blank">this one</a>.<br />
 <h4>Web Technologies & Software:</h4>
 ● HTML, CSS, JavaScript, jQuery, MySQL, PHP, Navicat, Smarty, Bitbucket, Sourcetree, Photoshop, MailChimp<br />
 <h4>Other Web Technologies (I use or have used on my own time):</h4>
-● ReactJS, Node.js, Webpack, Babel, Firebase, Git, Github, AngularJS, Grunt
+● React, Node.js, Webpack, Babel, Firebase, Git, Github, AngularJS, Grunt
 <h4>Weigel Broadcasting (Section 2)<br />
 November 2009 to Present</h4>
 <h4>Position:</h4>
@@ -217,7 +219,7 @@ September 2006 to April 2007</h4>
 ● Graduated with honors: <em>Cum laude</em><br />
 ● Graduated with high departmental distinction—English<br />
 ● Made dean’s list four out of five semesters<br />
-<button className="footer-button-res"><a href="https://drive.google.com/uc?export=download&id=1II7ANUQDXi1iBLXPv22UxZtR0P4wO9Rs" download>Download Resume</a></button>
+<button className="footer-button-res"><a href="https://drive.google.com/uc?export=download&id=1UZ5c-j0M4JzrA9aV-cjDeVhL_Cn3NMHq" download>Download Resume</a></button>
 <button className="header-button-x-bottom" onClick={this.props.hideResume}><i className="fa fa-times" aria-hidden="true"></i></button>
 </div>
       );

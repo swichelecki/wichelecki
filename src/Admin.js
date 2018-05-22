@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FileInput from './components/FileInput';
 import AboutAbout from './components/AboutAbout';
 import ManageWebsites from './components/ManageWebsites';
+import ManageLearning from './components/ManageLearning';
 import './css/app.css';
 import './css/admin.css';
 import './images/icon_wichel_1.png';
@@ -50,6 +51,7 @@ class Admin extends Component {
               <li onClick={() => this.showHideTab('one')} data-li="one">Header Image</li>
               <li onClick={() => this.showHideTab('two')} data-li="two">Website Widgets</li>
               <li onClick={() => this.showHideTab('three')} data-li="three">Text Sections</li>
+              <li onClick={() => this.showHideTab('four')} data-li="four">Learning Section</li>
             </ul>
             <div id="first-tab">
             </div>
@@ -60,7 +62,10 @@ class Admin extends Component {
                 <ManageWebsites />
             </div>
             <div id="three" className="tab">
-                  <AboutAbout />
+                 <AboutAbout />
+            </div>
+            <div id="four" className="tab">
+                 <ManageLearning />
             </div>
           </div>
           </div>
