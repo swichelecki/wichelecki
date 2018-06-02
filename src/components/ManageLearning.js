@@ -289,7 +289,7 @@ class ShowHideSection extends Component {
 
         return(
             <div>
-            <h2>Show/Hide Section</h2>
+            <h3>Show/Hide Section</h3>
                 <button className="on-off" onClick={this.props.onOff}
                 style={ this.props.isTrue == true ? {backgroundColor:'green'} : {backgroundColor:'red'}}>
                     { this.props.isTrue == true ? "On" : "Off" }
@@ -313,7 +313,7 @@ class LearningForm extends Component {
         return(
             <div style={displayStyle}>
             <form onSubmit={this.props.onSubmit}>
-            <h2>Add Learning Blurb</h2>
+            <h3>Add Learning Blurb</h3>
             <label>Title:<br/>
                 <input type="text" name="header" value={this.props.stateValue.header} onChange={this.props.onChange}/>
             </label>
@@ -340,7 +340,7 @@ class EditLearningForm extends Component {
         return(
             <div style={displayStyle}>
             <form onSubmit={this.props.onSubmit}>
-            <h2>Edit Learning Blurb</h2>
+            <h3>Edit Learning Blurb</h3>
             <label>Title:<br/>
                 <input type="text" name="header" value={this.props.stateValue.header} onChange={this.props.onChange}/>
             </label>
