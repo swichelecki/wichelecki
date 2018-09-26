@@ -198,6 +198,10 @@ ul.resume-ul li {
   color: #ed1b24;
 }
 
+#remove-p-margin p, #remove-p-margin h2, #remove-p-margin h3, #remove-p-margin h4 {
+    margin: 0;
+}
+
 @media (min-width: 481px) and (max-width: 675px) {
     .header-h2 {
       font-size: 20px;

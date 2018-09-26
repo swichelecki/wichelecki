@@ -3,8 +3,11 @@ import FileInput from './components/FileInput';
 import AboutAbout from './components/AboutAbout';
 import ManageWebsites from './components/ManageWebsites';
 import ManageLearning from './components/ManageLearning';
+import ManageResumeId from './components/ManageResumeId';
+import ManageResumeText from './components/ManageResumeText';
 import './css/app.css';
 import './css/admin.css';
+import './css/quill.css';
 import './images/icon_wichel_1.png';
 
 class Admin extends Component {
@@ -52,6 +55,7 @@ class Admin extends Component {
               <li onClick={() => this.showHideTab('two')} data-li="two">Website Widgets</li>
               <li onClick={() => this.showHideTab('three')} data-li="three">Text Sections</li>
               <li onClick={() => this.showHideTab('four')} data-li="four">Learning Section</li>
+              <li onClick={() => this.showHideTab('five')} data-li="five">Resume Section</li>
             </ul>
             <div id="first-tab">
             </div>
@@ -66,6 +70,10 @@ class Admin extends Component {
             </div>
             <div id="four" className="tab">
                  <ManageLearning />
+            </div>
+            <div id="five" className="tab">
+                <ManageResumeText />
+                <ManageResumeId />
             </div>
           </div>
           </div>
