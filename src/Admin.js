@@ -5,6 +5,7 @@ import ManageWebsites from './components/ManageWebsites';
 import ManageLearning from './components/ManageLearning';
 import ManageResumeId from './components/ManageResumeId';
 import ManageResumeText from './components/ManageResumeText';
+import ManageHeaderText from './components/ManageHeaderText';
 import './css/app.css';
 import './css/admin.css';
 import './css/quill.css';
@@ -51,7 +52,7 @@ class Admin extends Component {
           </div>
           <div className="tab-wrapper">
             <ul className="admin-ul">
-              <li onClick={() => this.showHideTab('one')} data-li="one">Header Image</li>
+              <li onClick={() => this.showHideTab('one')} data-li="one">Header Section</li>
               <li onClick={() => this.showHideTab('two')} data-li="two">Website Widgets</li>
               <li onClick={() => this.showHideTab('three')} data-li="three">Text Sections</li>
               <li onClick={() => this.showHideTab('four')} data-li="four">Learning Section</li>
@@ -61,6 +62,7 @@ class Admin extends Component {
             </div>
             <div id="one" className="tab">
                 <FileInput />
+                <ManageHeaderText/>
             </div>
             <div id="two" className="tab">
                 <ManageWebsites />

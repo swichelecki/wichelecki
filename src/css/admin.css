@@ -95,8 +95,8 @@ input[type="submit"].form-submit {
   cursor: pointer;
 }
 
-.manage-header-image-h3 {
-  padding-bottom: 1rem;
+.header-textarea {
+    margin-bottom: -18px;
 }
 
 /* tab styles */

@@ -54,7 +54,7 @@ class FileInput extends Component {
 
         return(
           <div>
-              <h3 className="manage-header-image-h3">Manage Header Image</h3>
+              <h3>Manage Header Image</h3>
               <form onSubmit={this.handleSubmit}>
                   <input
                     type="file"

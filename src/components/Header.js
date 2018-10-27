@@ -57,7 +57,8 @@ class Header extends Component {
             resume: {display: 'none'},
             resWrapper: {display: 'none'},
             text: '',
-            id: ''
+            id: '',
+            headerText: ''
           };
     }
 
@@ -79,6 +80,11 @@ class Header extends Component {
         googleId.on('value', snapshot => {
             this.getGoogleId(snapshot.val());
         });
+
+        let headerText = firebase.database().ref('headerText');
+        headerText.on('value', snapshot => {
+            this.getHeaderText(snapshot.val());
+        });
     }
 
     getData(value) {
@@ -91,6 +97,12 @@ class Header extends Component {
         let googleId = value;
         let id = googleId.id;
         this.setState({id: id});
+    }
+
+    getHeaderText(value) {
+        let headerText = value;
+        let text = headerText.text;
+        this.setState({headerText: text});
     }
 
     showResume(event) {
@@ -125,6 +137,9 @@ class Header extends Component {
 
         let idea = firebase.database().ref('googleId');
         id.off();
+
+        let headerText = firebase.database().ref('headerText');
+        headerText.off();
     }
 
     render () {
@@ -147,7 +162,7 @@ class Header extends Component {
                   <p className="header-p"><a href="mailto:swichelecki@gmail.com">swichelecki@gmail.com</a></p>
               </header>
               <section className="subheader">
-                  <p className="subheader-p">My name is Steve Wichelecki, and I’ve been learning web development for two years now.</p>
+                  <p className="subheader-p">{this.state.headerText}</p>
                   <h3 className="subheader-h2">Keep scrolling to learn more about me.</h3>
               </section>
               <img src={this.state.url}/>
