@@ -152,17 +152,6 @@ button.header-button-x-bottom .fa-times {
   opacity: .7;
 }
 
-ul.resume-ul{
-  list-style: none;
-  padding-left: 0;
-  padding-top: 2rem;
-  margin: 0 auto;
-}
-
-ul.resume-ul li {
-  text-align: center;
-}
-
 .res-url {
   text-decoration: underline;
   font-weight: bold;

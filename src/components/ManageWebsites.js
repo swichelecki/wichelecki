@@ -244,7 +244,7 @@ class ManageWebsites extends Component {
             displayProp={this.state.display}
             cancelEdit={this.openCloseForm}
             />
-            <h3>Manage Websites</h3>
+            <h3 className="admin-h3">Manage Websites</h3>
             <FlexBox
             boxContent={this.state.dataArray}
             deleteWidget={this.deleteConfirm}
@@ -302,7 +302,7 @@ class WebsiteInput extends Component {
       return(
         <div style={displayStyle}>
         <form onSubmit={this.props.webSubmit} id="contactForm">
-            <h3>Add Website Widget</h3>
+            <h3 className="admin-h3">Add Website Widget</h3>
             <label>
                 Site Name:<br/>
                 <input type="text" name="header" value={this.props.webInput.header} onChange={this.props.onChange}/>
@@ -318,7 +318,8 @@ class WebsiteInput extends Component {
                   ref={input => {
                     this.fileInput = input;
                   }}
-                />
+                className="inputfile"/>
+                <label for="file">Choose File</label>
                 <img src={url} className="file-image"/>
             </label>
             <label>
@@ -397,7 +398,7 @@ class EditWidgetForm extends Component {
 
       return (
         <div style={displayStyle}>
-        <h3>Update Website Widget</h3>
+        <h3 className="admin-h3">Update Website Widget</h3>
         <form onSubmit={this.props.onSubmit} id="contactForm">
             <label>
                 Site Name:<br/>
@@ -414,7 +415,8 @@ class EditWidgetForm extends Component {
                   ref={input => {
                   this.fileInput = input;
                   }}
-                />
+                className="inputfile"/>
+                <label for="file">Choose File</label>
                 <img src={this.props.webInput.image} className="file-image"/>
             </label>
             <label>
@@ -461,13 +463,13 @@ class FlexBox extends Component {
       let contentBlock;
       if (this.props.boxContent) {
 
-          contentBlock = this.props.boxContent.map((data, index) => {
+          contentBlock = this.props.boxContent.slice(0).reverse().map((data, index) => {
 
             return(
-                <div id="box" key={index} className="flexbox">
+                <div id="box" key={index} className="manage-section-box">
                     <p><strong>{data.header}</strong></p>
-                    <button onClick={() => {this.props.editWidget(data.backend, data.frontend, data.header, data.image, data.lessons, data.lessonstext, data.tech, data.techtext, data.text, data.key, data.link); this.props.openForm();}}>Edit</button>
-                    <button onClick={() => this.props.deleteWidget(data.key)}>Delete</button>
+                    <button className="admin-button left-button" onClick={() => {this.props.editWidget(data.backend, data.frontend, data.header, data.image, data.lessons, data.lessonstext, data.tech, data.techtext, data.text, data.key, data.link); this.props.openForm();}}>Edit</button>
+                    <button className="admin-button right-button" onClick={() => this.props.deleteWidget(data.key)}>Delete</button>
                 </div>
             );
 
@@ -475,7 +477,7 @@ class FlexBox extends Component {
       }
 
       return (
-        <div className="flexbox-container">
+        <div>
         {contentBlock}
         </div>);
   }

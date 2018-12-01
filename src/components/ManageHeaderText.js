@@ -70,10 +70,10 @@ class ManageHeaderText extends Component {
     render() {
 
         return(
-            <div>
+            <div className="resume-tab-margin">
                 <br/>
                 <form onSubmit={this.handleSubmit} id="contactForm">
-                    <h3>Manage Header Text</h3>
+                    <h3 className="admin-h3">Manage Header Text</h3>
                     <textarea rows="5" value={this.state.text} onChange={this.handleChange} className="header-textarea"/>
                     <br/>
                     <input type="submit" className="form-submit" value="Submit"/>

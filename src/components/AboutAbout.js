@@ -176,7 +176,7 @@ class AboutAbout extends Component {
                 displayProp={this.state.display}
                 cancelEdit={this.openCloseForm}
                 />
-                <h3>Manage About Section</h3>
+                <h3 className="admin-h3">Manage About Section</h3>
                 <AboutDivs
                 deleteAbout={this.deleteConfirm}
                 aboutObject={this.state.aboutArray}
@@ -205,7 +205,7 @@ class AboutForm extends Component {
       return(
         <div style={displayStyle}>
         <form onSubmit={this.props.onFormSubmit}>
-            <h3>Add About Section</h3>
+            <h3 className="admin-h3">Add About Section</h3>
             <label>Header:<br/>
             <input type="text" name="header" value={this.props.formValue.header} onChange={this.props.onChange}/>
             </label>
@@ -229,7 +229,7 @@ class EditAboutForm extends Component {
               return(
                 <div style={displayStyle}>
                 <form onSubmit={this.props.onSubmit}>
-                    <h3>Update About Section</h3>
+                    <h3 className="admin-h3">Update About Section</h3>
                     <label>Header:<br/>
                     <input type="text" name="header" value={this.props.formValue.header} onChange={this.props.onChange}/>
                     </label>
@@ -254,10 +254,10 @@ class AboutDivs extends Component {
             aboutKey = this.props.aboutObject.map((key, index) => {
 
               return(
-                  <div className="about-container" key={index}>
-                      <p className="body-header-h2"><strong>{key.header}</strong></p>
-                        <button onClick={() => {this.props.editAbout(key.header, key.text, key.key); this.props.openForm();}}>Edit</button>
-                        <button onClick={() => this.props.deleteAbout(key.key)}>Delete</button>
+                  <div className="manage-section-box" key={index}>
+                      <p><strong>{key.header}</strong></p>
+                        <button className="admin-button left-button" onClick={() => {this.props.editAbout(key.header, key.text, key.key); this.props.openForm();}}>Edit</button>
+                        <button className="admin-button right-button" onClick={() => this.props.deleteAbout(key.key)}>Delete</button>
                   </div>
               );
 

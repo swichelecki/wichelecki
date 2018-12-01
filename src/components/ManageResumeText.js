@@ -47,9 +47,9 @@ class ManageResumeText extends Component {
     render() {
 
         return(
-            <div>
+            <div className="resume-tab-margin">
                 <form onSubmit={this.handleSubmit}>
-                    <h3>Edit Resume</h3>
+                    <h3 className="admin-h3">Edit Resume</h3>
                     <ReactQuill value={this.state.text} onChange={this.handleChange} />
                     <input type="submit" className="form-submit" value="Submit"/>
                 </form>

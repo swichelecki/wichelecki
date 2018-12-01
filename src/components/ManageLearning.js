@@ -271,7 +271,7 @@ class ManageLearning extends Component {
                 cancelEdit={this.openClose}
                 display={this.state.display}
             />
-            <h3>Manage Learning Section</h3>
+            <h3 className="admin-h3">Manage Learning Section</h3>
             <ManageObjects
                 learningArray={this.state.learningArray}
                 deleteLearning={this.confirmDelete}
@@ -289,7 +289,7 @@ class ShowHideSection extends Component {
 
         return(
             <div>
-            <h3>Show/Hide Section</h3>
+            <h3 className="admin-h3">Show/Hide Section</h3>
                 <button className="on-off" onClick={this.props.onOff}
                 style={ this.props.isTrue == true ? {backgroundColor:'green'} : {backgroundColor:'red'}}>
                     { this.props.isTrue == true ? "On" : "Off" }
@@ -313,7 +313,7 @@ class LearningForm extends Component {
         return(
             <div style={displayStyle}>
             <form onSubmit={this.props.onSubmit}>
-            <h3>Add Learning Blurb</h3>
+            <h3 className="admin-h3">Add Learning Blurb</h3>
             <label>Title:<br/>
                 <input type="text" name="header" value={this.props.stateValue.header} onChange={this.props.onChange}/>
             </label>
@@ -340,7 +340,7 @@ class EditLearningForm extends Component {
         return(
             <div style={displayStyle}>
             <form onSubmit={this.props.onSubmit}>
-            <h3>Edit Learning Blurb</h3>
+            <h3 className="admin-h3">Edit Learning Blurb</h3>
             <label>Title:<br/>
                 <input type="text" name="header" value={this.props.stateValue.header} onChange={this.props.onChange}/>
             </label>
@@ -368,10 +368,10 @@ class ManageObjects extends Component {
                 learningContent = this.props.learningArray.slice(0).reverse().map((data, index) => {
 
                     return(
-                        <div id="box" key={index} className="flexbox">
+                        <div id="box" key={index} className="manage-section-box">
                             <p><strong>{data.header}</strong></p>
-                            <button onClick={() => {this.props.editLearning(data.header, data.icon, data.text, data.key, data.date); this.props.openForm();}}>Edit</button>
-                            <button onClick={() => this.props.deleteLearning(data.key)}>Delete</button>
+                            <button className="admin-button left-button" onClick={() => {this.props.editLearning(data.header, data.icon, data.text, data.key, data.date); this.props.openForm();}}>Edit</button>
+                            <button className="admin-button right-button" onClick={() => this.props.deleteLearning(data.key)}>Delete</button>
                         </div>
                     );
 

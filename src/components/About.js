@@ -44,14 +44,12 @@ class AboutDivs extends Component {
     render() {
         let aboutKey;
         if (this.props.aboutObject) {
-            aboutKey = this.props.aboutObject.map((key, index) => {
+            aboutKey = this.props.aboutObject.map((data, index) => {
 
               return(
-                  <div className="about-wrapper">
-                      <div className="about-container" key={index}>
-                          <h2 className="body-header-h2 about-header">{key.header}</h2>
-                          <p className="about-p">{key.text}</p>
-                      </div>
+                  <div className="about-container" key={index}>
+                      <h2 className="body-header-h2 about-header">{data.header}</h2>
+                      <p className="about-p">{data.text}</p>
                   </div>
               );
 
@@ -60,7 +58,9 @@ class AboutDivs extends Component {
         }
 
         return(
-            <div>{aboutKey}</div>
+            <div className="about-wrapper">
+            {aboutKey}
+            </div>
         );
     }
 }

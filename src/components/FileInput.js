@@ -61,7 +61,8 @@ class FileInput extends Component {
                     ref={input => {
                       this.fileInput = input;
                     }}
-                  />
+                  id="header-image" className="inputfile"/>
+                  <label for="header-image">Choose File</label>
                   <button type="submit" className="photo-submit" onClick={this.addImage}>Submit</button>
                   <img src={url} className="file-image"/>
               </form>

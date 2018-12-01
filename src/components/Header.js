@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
-import FontAwesome from 'react-fontawesome';
 
 var didScroll;
 var lastScrollTop = 0;
@@ -180,14 +179,6 @@ class Resume extends Component {
         return(
 <div id="res-container">
 <button className="header-button-x" onClick={this.props.hideResume}><i className="fa fa-times" aria-hidden="true"></i></button>
-<ul className="resume-ul">
-<li><strong>Steve Wichelecki</strong></li>
-<li>2857 W. Shakespeare</li>
-<li>Chicago, IL 60647</li>
-<li>(773) 612-4221</li>
-<li><a className="res-url" href="mailto:swichelecki@gmail.com">swichelecki@gmail.com</a></li>
-</ul>
-<br /><br />
 <div id="remove-p-margin" dangerouslySetInnerHTML={{__html: this.props.text}}>
 </div>
 <button className="footer-button-res"><a href={`https://drive.google.com/uc?export=download&id=${this.props.id}`} download>Download Resume</a></button>
