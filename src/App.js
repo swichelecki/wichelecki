@@ -11,6 +11,7 @@ import ManageLearning from './components/ManageLearning';
 import ManageResumeId from './components/ManageResumeId';
 import ManageResumeText from './components/ManageResumeText';
 import ManageHeaderText from './components/ManageHeaderText';
+import Login from './components/Login';
 import './css/app.css';
 import './css/header.css';
 import './css/body.css';
@@ -21,12 +22,28 @@ import './images/icon_wichel_1.png';
 import './images/1022_lakefront.jpg';
 import './css/admin.css';
 import './css/quill.css';
-
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 class App extends Component {
+    constructor() {
+        super();
+        this.logIn = this.logIn.bind(this);
+        this.state = {
+            loggedIn: false
+        }
+    }
+
+    logIn(val) {
+
+        this.setState({
+            loggedIn: val
+        });
+
+    }
 
     render() {
+
+        const loggedIn = this.state.loggedIn;
 
         return(
             <Router>
@@ -34,6 +51,16 @@ class App extends Component {
                     <Switch>
                         <Route exact path="/" component={Home}/>
                         <Route path="/admin" component={Cms}/>
+                        <Route path="/login" render={() => (
+                                loggedIn ? (
+                                    <Redirect to="/admin"/>
+                                ) : (
+                                    <Login
+                                        loggedIn={this.state.loggedIn}
+                                        logIn={this.logIn} 
+                                    />
+                                )
+                        )}/>
                     </Switch>
                 </div>
             </Router>
@@ -57,14 +84,51 @@ class Home extends Component {
     }
 }
 
+import * as firebase from 'firebase';
 class Cms extends Component {
 
     constructor() {
         super();
         this.showHideTab = this.showHideTab.bind(this);
+        this.logout = this.logout.bind(this);
+        this.state = {
+            user: '',
+            loggedIn: false
+        }
     }
 
-    showHideTab(inside){
+    componentDidMount() {
+
+        const auth = firebase.auth();
+        const promise = auth.onAuthStateChanged(firebaseUser => {
+
+            if(firebaseUser) {
+
+                let userName = String(firebaseUser['email']);
+
+                this.setState({
+                    user: userName,
+                    loggedIn: true
+                });
+
+            }
+
+        });
+    }
+
+    logout(event) {
+
+        firebase.auth().signOut().then(() => {
+
+            this.setState({
+                loggedIn: false
+            });
+
+        });
+
+    }
+
+    showHideTab(inside) {
 
         let tabs = document.getElementsByClassName("tab");
         let firstTab = document.getElementById('first-tab');
@@ -90,11 +154,22 @@ class Cms extends Component {
 
     render() {
 
+        const loggedIn = this.state.loggedIn;
+
         return(
           <div className="admin-body">
           <div className="admin-header">
             <h2>Wichelecki.com Content Management System</h2>
-            <h3>The database is set to read only (naturally) but please click around.</h3>
+            {loggedIn ? (
+            <p>
+                You are logged in as <strong>{this.state.user}</strong>.
+                <button className="logout" onClick={this.logout}>Log out</button>
+            </p>
+            ) : (
+            <h3>
+                The database is set to read only (naturally) but please click around.
+            </h3>
+            )}
           </div>
           <div className="tab-wrapper">
             <ul className="admin-ul">

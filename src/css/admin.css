@@ -234,6 +234,62 @@ input[type="text"].google-id-input {
     width: 326px;
 }
 
+.absolute-center {
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+form.login-form {
+    background-color: #2222;
+    margin: 0 auto;
+    width: 50%;
+    padding: .6rem 1.5rem;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px 0 #999;
+}
+
+input[type="text"].login-input {
+    border-radius: 0;
+    padding-left: .5rem;
+    border: 1px solid #cbcbcb;
+    height: 2.5rem;
+    width: 100%;
+    margin: 16px 0 0 0;
+}
+
+input[type="password"].login-input {
+    border-radius: 0;
+    padding-left: .5rem;
+    border: 1px solid #cbcbcb;
+    height: 2.5rem;
+    width: 100%;
+    margin: 16px 0 0 0;
+}
+
+input[type="submit"].login-submit {
+    position: relative;
+    width: 100%;
+    padding: 10px 10px;
+    margin: 16px 0 16px;
+}
+
+button.logout {
+    margin-left: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #2a2a2a;
+    color: #fff;
+    outline: none;
+    border: none;
+}
+
 @media (min-width: 320px) and (max-width: 360px) {
 
     input[type="text"].google-id-input {
