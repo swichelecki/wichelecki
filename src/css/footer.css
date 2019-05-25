@@ -1,41 +1,12 @@
-button.footer-button-one {
-    margin: 0 auto;
-    display: block;
-    padding: 55px 0 0 0;
-    background-color: transparent;
-    border: none;
-    outline: none;
+.footer-wrap {
     color: #2a2a2a;
     font-weight: bold;
     font-size: 18px;
+    text-align: center;
+    padding: 55px 0 80px;
 }
 
-a button.footer-button-one:hover {
+.footer-button-one:hover {
   text-decoration: underline;
-  color: #ed1b24;
   cursor: pointer;
-}
-
-button.footer-button-two {
-    margin: 0 auto;
-    display: block;
-    padding: 20px 5% 80px 5%;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #2a2a2a;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-a button.footer-button-two {
-  text-decoration: none;
-  color: #2a2a2a;
-  cursor: pointer;
-}
-
-a button.footer-button-two:hover {
-  text-decoration: underline;
-  color: #ed1b24;
 }

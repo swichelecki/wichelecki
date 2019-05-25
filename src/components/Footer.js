@@ -33,9 +33,10 @@ class Footer extends Component {
         const id = this.state.id;
 
         return(
-              <div>
-              <a href={`https://drive.google.com/uc?export=download&id=${id}`} download><button className="footer-button-one">Download Resume</button></a>
-              <Link to="/admin" target="_blank"><button className="footer-button-two">Check out this website's CRUD CMS</button></Link>
+              <div className="footer-wrap">
+                <Link to="/admin" target="_blank" className="footer-button-one">Check out this website's CRUD CMS</Link>
+                <br/><br/>
+                <a href={`${id}`} target="_blank" className="footer-button-one">See GitHub repo</a>
               </div>
         );
 

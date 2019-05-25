@@ -31,7 +31,6 @@
 
 .header-button:hover {
   text-decoration: underline;
-  color: #ed1b24;
 }
 
 #res-container{
@@ -49,12 +48,7 @@ button.header-button-x {
   color: #000;
 }
 
-button.header-button-x:hover {
-  color: #ed1b24;
-}
-
 button.header-button-x .fa-times {
-  /*position: absolute;*/
   top: -5px;
   right: 0px;
   font-size: 30px;
@@ -71,12 +65,7 @@ button.header-button-x-bottom {
   color: #000;
 }
 
-button.header-button-x-bottom:hover {
-  color: #ed1b24;
-}
-
 button.header-button-x-bottom .fa-times {
-  /*position: absolute;*/
   bottom: 0px;
   right: 0px;
   font-size: 30px;
@@ -97,7 +86,6 @@ button.header-button-x-bottom .fa-times {
 
 .header-p a:hover {
   text-decoration: underline;
-  color: #ed1b24;
 }
 
 .subheader {
@@ -160,31 +148,24 @@ button.header-button-x-bottom .fa-times {
 .res-url:hover {
   text-decoration: underline;
   font-weight: bold;
-  color: #ed1b24;
 }
 
-.footer-button-res {
-    margin: 0 auto;
-    display: block;
+.res-link-wrapper {
+    margin-top: 28px;
     text-align: center;
+}
+
+a.footer-button-res {
     margin-top: 30px;
-    background-color: transparent;
-    border: none;
-    outline: none;
     cursor: pointer;
     color: #2a2a2a;
+    text-decoration: none;
     font-weight: bold;
     font-size: 18px;
 }
 
-.footer-button-res a {
-  text-decoration: none;
-  color: #2a2a2a;
-}
-
-.footer-button-res a:hover {
+a.footer-button-res:hover {
   text-decoration: underline;
-  color: #ed1b24;
 }
 
 #remove-p-margin p, #remove-p-margin h2, #remove-p-margin h3, #remove-p-margin h4 {

@@ -69,7 +69,7 @@ class ManageResumeId extends Component {
         return(
             <div>
                 <form onSubmit={this.handleIdSubmit}>
-                    <h3 className="admin-h3">Update Google PDF ID</h3>
+                    <h3 className="admin-h3">Update GitHub Repo</h3>
                         <input type="text" id="success" value={this.state.id} onChange={this.handleIdChange} className="google-id-input"/>
                     <br/>
                     <input type="submit" className="form-submit" value="Submit"/>

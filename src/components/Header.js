@@ -178,11 +178,13 @@ class Resume extends Component {
 
         return(
 <div id="res-container">
-<button className="header-button-x" onClick={this.props.hideResume}><i className="fa fa-times" aria-hidden="true"></i></button>
-<div id="remove-p-margin" dangerouslySetInnerHTML={{__html: this.props.text}}>
-</div>
-<button className="footer-button-res"><a href={`https://drive.google.com/uc?export=download&id=${this.props.id}`} download>Download Resume</a></button>
-<button className="header-button-x-bottom" onClick={this.props.hideResume}><i className="fa fa-times" aria-hidden="true"></i></button>
+    <button className="header-button-x" onClick={this.props.hideResume}><i className="fa fa-times" aria-hidden="true"></i></button>
+    <div id="remove-p-margin" dangerouslySetInnerHTML={{__html: this.props.text}}>
+    </div>
+    <div className="res-link-wrapper">
+        <a href={`${this.props.id}`} target="_blank" className="footer-button-res">This website's GitHub repo</a>
+    </div>
+    <button className="header-button-x-bottom" onClick={this.props.hideResume}><i className="fa fa-times" aria-hidden="true"></i></button>
 </div>
       );
 
