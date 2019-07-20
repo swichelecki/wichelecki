@@ -16,6 +16,11 @@
     margin: 0;
 }
 
+.flexbox-container::after {
+    content: "";
+    width: 47%;
+}
+
 .flexbox {
    width: 47%;
    padding: 2rem;
