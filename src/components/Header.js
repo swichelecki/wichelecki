@@ -157,8 +157,10 @@ class Header extends Component {
               </div>
               <header id="head" className="header clearfix">
                   <h2 className="header-h2 clearfix">Steve Wichelecki</h2>
-                  <button className="header-button" onClick={this.showResume}>Resume</button>
-                  <p className="header-p"><a href="mailto:swichelecki@gmail.com">swichelecki@gmail.com</a></p>
+                  <div className="header-right-nav">
+                    <button className="header-button" onClick={this.showResume}>Resume</button>
+                    <a className="header-a" href="mailto:swichelecki@gmail.com">swichelecki@gmail.com</a>
+                  </div>
               </header>
               <section className="subheader">
                   <p className="subheader-p">{this.state.headerText}</p>
